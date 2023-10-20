@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/flutter_svg.dart';
 
 void main() {
   runApp(
@@ -44,8 +45,14 @@ class _LotteryHomePageState extends State<LotteryHomePage> {
           children: [Text("You're Lucky number is $luckyNumber ")],
         ),
         floatingActionButton: FloatingActionButton(
+          backgroundColor: Colors.blueGrey,
           onPressed: () {},
-          child: const Icon(Icons.restart_alt_sharp),
+          child: SvgPicture.asset(
+            'icons/lottery_wheel.svg',
+            alignment: Alignment.center,
+            height: 45,
+            width: 50,
+          ),
         ),
       ),
     );
