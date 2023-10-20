@@ -59,29 +59,61 @@ class _LotteryHomePageState extends State<LotteryHomePage> {
                 padding: const EdgeInsets.all(20.0),
                 child: Container(
                   height: 250,
+                  width: 300,
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(10),
-                    color: Color.fromARGB(180, 178, 133, 117),
+                    color: luckyNumber == 5
+                        ? const Color(0xff6342b5)
+                        : const Color.fromARGB(180, 178, 133, 117),
                   ),
                   child: Padding(
                     padding: const EdgeInsets.all(14.0),
-                    child: Column(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
-                        const Icon(
-                          Icons.error_outline,
-                          color: Color.fromARGB(255, 240, 34, 19),
-                          size: 30,
-                        ),
-                        const SizedBox(
-                          height: 20,
-                        ),
-                        Text(
-                          "Better luck next time your number is $luckyNumber \n try again ",
-                          textAlign: TextAlign.center,
-                        ),
-                      ],
-                    ),
+                    child: luckyNumber == 5 //ternary operator used here
+                        ? Column(
+                            // this colum widget display
+                            //if condition is true(lucky num == 5 as genrated random num)
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                'icons/Lottery_win.svg',
+                                height: 90,
+                                // width: ,
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                "Congrats you won Lottery,\nYour number is $luckyNumber",
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                                textAlign: TextAlign.center,
+                              ),
+                            ],
+                          )
+                        : Column(
+                            // else this column display
+                            // when condition is false
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              SvgPicture.asset(
+                                'icons/oops.svg',
+                                height: 70,
+                              ),
+                              const SizedBox(
+                                height: 20,
+                              ),
+                              Text(
+                                "Better luck next time your number is $luckyNumber \n try again ",
+                                textAlign: TextAlign.center,
+                                style: const TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 20,
+                                ),
+                              ),
+                            ],
+                          ),
                   ),
                 ),
               )
@@ -91,8 +123,9 @@ class _LotteryHomePageState extends State<LotteryHomePage> {
         floatingActionButton: FloatingActionButton(
           backgroundColor: Color.fromRGBO(126, 166, 185, 1),
           onPressed: () {
-            luckyNumber = random.nextInt(100);
+            luckyNumber = random.nextInt(8);
             print(luckyNumber);
+            setState(() {});
           },
           child: SvgPicture.asset(
             'icons/lottery_wheel.svg',
