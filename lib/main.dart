@@ -49,7 +49,7 @@ class _LotteryHomePageState extends State<LotteryHomePage> {
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text(
-                "You're Lucky number is $luckyNumber ",
+                "You're Lottery number is $luckyNumber ",
                 style: const TextStyle(
                   color: Colors.white,
                   fontSize: 24,
@@ -82,9 +82,9 @@ class _LotteryHomePageState extends State<LotteryHomePage> {
                               const SizedBox(
                                 height: 20,
                               ),
-                              Text(
-                                "Congrats you won Lottery,\nYour number is $luckyNumber",
-                                style: const TextStyle(
+                              const Text(
+                                "Congrats you won\n 1B Euro Lottery",
+                                style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
                                 ),
@@ -121,7 +121,7 @@ class _LotteryHomePageState extends State<LotteryHomePage> {
           ),
         ),
         floatingActionButton: FloatingActionButton(
-          backgroundColor: Color.fromRGBO(126, 166, 185, 1),
+          backgroundColor: const Color.fromRGBO(126, 166, 185, 1),
           onPressed: () {
             luckyNumber = random.nextInt(8);
             print(luckyNumber);
